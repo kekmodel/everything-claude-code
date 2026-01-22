@@ -1,4 +1,4 @@
-# Everything Claude Code
+# Oh My Claude Code
 
 Principles-first workflow system for Claude Code.
 
@@ -9,18 +9,18 @@ Principles-first workflow system for Claude Code.
 Copy and paste this to Claude Code:
 
 ```
-Install everything-claude-code by following:
-https://raw.githubusercontent.com/kekmodel/everything-claude-code/master/README.md
+Install oh-my-claude-code by following:
+https://raw.githubusercontent.com/kekmodel/oh-my-claude-code/master/README.md
 ```
 
 ### For LLM Agents
 
 ```bash
-git clone https://github.com/kekmodel/everything-claude-code.git /tmp/ecc
+git clone https://github.com/kekmodel/oh-my-claude-code.git /tmp/omcc
 mkdir -p ~/.claude/agents ~/.claude/rules
-cp /tmp/ecc/agents/*.md ~/.claude/agents/
-cp /tmp/ecc/rules/*.md ~/.claude/rules/
-rm -rf /tmp/ecc
+cp /tmp/omcc/agents/*.md ~/.claude/agents/
+cp /tmp/omcc/rules/*.md ~/.claude/rules/
+rm -rf /tmp/omcc
 ```
 
 ## What's Included
