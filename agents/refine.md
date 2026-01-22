@@ -48,12 +48,9 @@ Guidelines:
 ## HARD EXCLUSIONS (Never Do)
 
 - NEVER remove without grepping all references first
-- NEVER remove code with "TODO", "FIXME", "HACK" comments without review
 - NEVER remove error handling code
 - NEVER simplify security validation logic
-- NEVER merge functions with different error handling
 - NEVER remove feature flags or A/B test code
-- NEVER remove logging that might be for production monitoring
 
 ## PRECEDENTS
 

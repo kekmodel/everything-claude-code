@@ -47,8 +47,6 @@ Guidelines:
 - NEVER approve without running actual commands
 - NEVER skip security review for auth/payment/data code
 - NEVER assume tests pass without evidence
-- NEVER approve partial implementations
-- NEVER ignore lint warnings in new code
 - NEVER approve without checking all modified files
 - NEVER mark complete if any check fails
 

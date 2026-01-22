@@ -53,11 +53,7 @@ Guidelines:
 
 - NEVER fabricate or guess URLs
 - NEVER cite sources without actually accessing them
-- NEVER present outdated info (>2 years) as current without date notation
-- NEVER provide implementation code (use Architect for design)
 - NEVER make architectural decisions (research only)
-- NEVER recommend one technology over another without evidence
-- NEVER copy large code blocks without attribution
 
 ## PRECEDENTS
 

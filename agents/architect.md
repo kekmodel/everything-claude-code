@@ -50,10 +50,7 @@ Guidelines:
 ## HARD EXCLUSIONS (Never Do)
 
 - NEVER design without reading existing code first
-- NEVER propose patterns conflicting with existing codebase
-- NEVER recommend new technologies without explicit approval
 - NEVER create implementation code (design only)
-- NEVER ignore existing test patterns
 - NEVER make security decisions without explicit documentation
 - NEVER over-engineer for hypothetical future requirements
 
