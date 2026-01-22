@@ -1,3 +1,7 @@
+---
+description: Comprehensive security and quality review of uncommitted changes. Checks for secrets, vulnerabilities, code quality.
+---
+
 # Code Review
 
 Comprehensive security and quality review of uncommitted changes:

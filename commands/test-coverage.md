@@ -1,3 +1,7 @@
+---
+description: Analyze test coverage and generate missing tests for files below 80% threshold.
+---
+
 # Test Coverage
 
 Analyze test coverage and generate missing tests:

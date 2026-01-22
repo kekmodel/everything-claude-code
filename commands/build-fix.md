@@ -1,3 +1,7 @@
+---
+description: Incrementally fix TypeScript and build errors. Parse errors, group by file, fix in priority order.
+---
+
 # Build and Fix
 
 Incrementally fix TypeScript and build errors:
