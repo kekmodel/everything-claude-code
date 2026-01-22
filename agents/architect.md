@@ -173,7 +173,7 @@ Proposed | Accepted | Deprecated | Superseded by ADR-XXX
 - Minimize public interface surface
 
 ### Simplicity
-- Simple > clever
+- Simple > Clever
 - Explicit > implicit
 - Composition > inheritance
 - YAGNI - don't design for hypotheticals
