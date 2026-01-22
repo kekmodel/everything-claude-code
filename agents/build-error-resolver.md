@@ -56,16 +56,6 @@ npm install <package>
 npm install -D @types/<package>
 ```
 
-## Project-Specific
-
-```typescript
-// Supabase typing
-const { data } = await supabase.from('markets').select('*') as { data: Market[] | null }
-
-// React 19 - don't use FC
-const Component = ({ children }: { children: React.ReactNode }) => <div>{children}</div>
-```
-
 ## Output Format
 
 ```

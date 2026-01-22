@@ -28,22 +28,23 @@ You enforce TDD with 80%+ coverage.
 - Boundary values (min/max)
 - Error paths (network failures, DB errors)
 
-## Project Mocks
+## Mock Examples
 
 ```typescript
-// Supabase
-jest.mock('@/lib/supabase', () => ({
-  supabase: { from: jest.fn(() => ({ select: jest.fn(() => ({ eq: jest.fn() })) })) }
+// Database client
+jest.mock('@/lib/database', () => ({
+  db: { query: jest.fn(() => Promise.resolve({ rows: [] })) }
 }))
 
-// Redis
-jest.mock('@/lib/redis', () => ({
-  searchMarketsByVector: jest.fn(() => Promise.resolve([{ slug: 'test', similarity_score: 0.95 }]))
+// Cache client
+jest.mock('@/lib/cache', () => ({
+  get: jest.fn(() => Promise.resolve(null)),
+  set: jest.fn(() => Promise.resolve())
 }))
 
-// OpenAI
-jest.mock('@/lib/openai', () => ({
-  generateEmbedding: jest.fn(() => Promise.resolve(new Array(1536).fill(0.1)))
+// External API
+jest.mock('@/lib/api', () => ({
+  fetch: jest.fn(() => Promise.resolve({ data: [] }))
 }))
 ```
 

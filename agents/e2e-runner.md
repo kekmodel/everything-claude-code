@@ -22,8 +22,8 @@ npx playwright show-report             # View report
 ```
 tests/e2e/
 ├── auth/          # login, logout, register
-├── markets/       # browse, search, create
-└── wallet/        # connect, transactions
+├── features/      # browse, search, create
+└── payments/      # checkout, transactions
 ```
 
 ## Page Object Pattern
@@ -81,4 +81,8 @@ export default defineConfig({
 })
 ```
 
-## Success: >95% pass rate, <5% flaky, all critical flows covered
+## Success Criteria
+
+- >95% pass rate
+- <5% flaky tests
+- All critical flows covered

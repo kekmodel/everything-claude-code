@@ -62,7 +62,7 @@ const { data } = await supabase.from('users').eq('id', id)
 
 Store tokens in httpOnly cookies, NOT localStorage. ALWAYS verify authorization before sensitive operations.
 
-#### Supabase Row Level Security
+#### Row Level Security (PostgreSQL)
 ```sql
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 
@@ -110,7 +110,7 @@ Apply rate limiting on all API endpoints. Use stricter limits for expensive oper
 
 NEVER log passwords, tokens, card numbers. Return generic error messages to users.
 
-### 9. Blockchain Security (Solana)
+### 9. Blockchain Security
 
 ```typescript
 import { verify } from '@solana/web3.js'
@@ -152,7 +152,7 @@ Before ANY production deployment:
 - [ ] **Errors**: No sensitive data exposed
 - [ ] **Logs**: No sensitive data logged
 - [ ] **Dependencies**: No vulnerabilities
-- [ ] **Supabase**: RLS enabled
+- [ ] **Database**: RLS enabled
 - [ ] **File Uploads**: Validated
 - [ ] **Blockchain**: Signatures verified (if applicable)
 

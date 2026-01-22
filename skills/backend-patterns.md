@@ -19,7 +19,7 @@ description: Backend rules for API design and database.
 - NEVER make N+1 queries - batch fetch related data
 - Use transactions for multi-table operations
 
-### Supabase Transaction (RPC)
+### Database Transaction (PostgreSQL)
 ```sql
 CREATE OR REPLACE FUNCTION create_market_with_position(
   market_data jsonb,

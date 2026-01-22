@@ -40,40 +40,33 @@ src/
     └── auth.spec.ts
 ```
 
-## Project-Specific Mocks
+## Mock Examples
 
-### Supabase
+### Database Client
 ```typescript
-jest.mock('@/lib/supabase', () => ({
-  supabase: {
-    from: jest.fn(() => ({
-      select: jest.fn(() => ({
-        eq: jest.fn(() => Promise.resolve({
-          data: [{ id: 1, name: 'Test Market' }],
-          error: null
-        }))
-      }))
+jest.mock('@/lib/database', () => ({
+  db: {
+    query: jest.fn(() => Promise.resolve({
+      rows: [{ id: 1, name: 'Test Item' }],
+      error: null
     }))
   }
 }))
 ```
 
-### Redis
+### Cache Client
 ```typescript
-jest.mock('@/lib/redis', () => ({
-  searchMarketsByVector: jest.fn(() => Promise.resolve([
-    { slug: 'test-market', similarity_score: 0.95 }
-  ])),
-  checkRedisHealth: jest.fn(() => Promise.resolve({ connected: true }))
+jest.mock('@/lib/cache', () => ({
+  get: jest.fn(() => Promise.resolve(null)),
+  set: jest.fn(() => Promise.resolve()),
+  checkHealth: jest.fn(() => Promise.resolve({ connected: true }))
 }))
 ```
 
-### OpenAI
+### External API
 ```typescript
-jest.mock('@/lib/openai', () => ({
-  generateEmbedding: jest.fn(() => Promise.resolve(
-    new Array(1536).fill(0.1)
-  ))
+jest.mock('@/lib/api', () => ({
+  fetch: jest.fn(() => Promise.resolve({ data: [] }))
 }))
 ```
 
