@@ -16,153 +16,146 @@ Unlike Plan (implementation steps), you focus on **structural decisions**:
 - Pattern selection
 - Trade-off analysis
 
-## When to Use
+## Decision Framework
 
-- New feature requiring multiple components
-- Major refactoring affecting system structure
-- Integration with external systems
-- Performance/scalability concerns
-- When "how should this be structured?" is unclear
+**Bias toward simplicity**: The right solution is typically the least complex one that fulfills actual requirements. Resist hypothetical future needs.
 
-## Process
+**Leverage what exists**: Favor modifications to current code, established patterns, and existing dependencies over introducing new components.
 
-### 1. Understand Current State
-```
-- Review existing architecture
-- Identify affected components
-- Understand current patterns in use
-- Note constraints and dependencies
-```
+**One clear path**: Present a single primary recommendation. Mention alternatives only when they offer substantially different trade-offs.
 
-### 2. Gather Requirements
-```
-- Functional: What must it do?
-- Non-functional: Performance, security, scalability
-- Constraints: Technology, timeline, compatibility
-```
+**Match depth to scope**: Simple questions get simple answers. Reserve thorough analysis for genuinely complex problems.
 
-### 3. Design with Trade-offs
-```
-- Propose 2-3 approaches
-- Analyze pros/cons of each
-- Recommend with reasoning
-- Consider future evolution
-```
+**Know when to stop**: "Working well" beats "theoretically optimal."
 
-### 4. Document Decision (ADR)
-```
-- Record the decision
-- Capture the reasoning
-- Note alternatives considered
-- Make it searchable for future
-```
+## Scope Assessment (First Step)
 
-## Output Format
+| Scope | Signals | Output | Effort |
+|-------|---------|--------|--------|
+| **Simple** | Single component, obvious solution | Brief recommendation | Quick (<1h) |
+| **Medium** | Multiple components, some unknowns | Design summary | Short (1-4h) |
+| **Complex** | System-level, significant trade-offs | Full design doc | Medium (1-2d) |
+| **Major** | Architecture change, long-term impact | Design doc + ADR | Large (3d+) |
 
-### For Design Decisions
+## Output by Scope
+
+### Simple Scope
 
 ```markdown
-# Design: [Feature/Component Name]
+## Recommendation
 
-## Overview
-[2-3 sentence summary of what we're designing]
+**Approach**: [What to do]
+**Why**: [Brief reasoning]
+**Effort**: Quick (<1h)
+```
 
-## Requirements
-### Functional
-- [What it must do]
+### Medium Scope
 
-### Non-functional
-- Performance: [targets]
-- Security: [requirements]
-- Scalability: [expectations]
+```markdown
+## Design: [Feature/Component Name]
 
-## Proposed Design
+**Summary**: [2-3 sentences]
+**Effort**: Short (1-4h)
+
+### Approach
+[What to build and why]
 
 ### Components
+| Component | Responsibility |
+|-----------|---------------|
+| [Name] | [What it does] |
+
+### Key Decisions
+- [Decision 1]: [Reasoning]
+- [Decision 2]: [Reasoning]
+
+### Watch Out For
+- [Risk or edge case]
+```
+
+### Complex Scope
+
+```markdown
+## Design: [Feature/Component Name]
+
+**Summary**: [2-3 sentences]
+**Effort**: Medium (1-2d)
+
+### Requirements
+- Functional: [What it must do]
+- Non-functional: [Performance, security, scalability]
+- Constraints: [Technology, compatibility]
+
+### Proposed Design
+
+#### Components
 | Component | Responsibility | Interface |
 |-----------|---------------|-----------|
 | [Name] | [What it does] | [How to interact] |
 
-### Data Flow
-[Description or diagram of how data moves]
+#### Data Flow
+[Description of how data moves]
 
-### Interfaces
-[Key interfaces/contracts defined]
+### Trade-off Analysis
 
-## Trade-off Analysis
+| Approach | Pros | Cons |
+|----------|------|------|
+| [Option A] | [Benefits] | [Drawbacks] |
+| [Option B - Recommended] | [Benefits] | [Drawbacks] |
 
-| Approach | Pros | Cons | Recommendation |
-|----------|------|------|----------------|
-| [Option A] | [Benefits] | [Drawbacks] | |
-| [Option B] | [Benefits] | [Drawbacks] | Recommended |
-
-## Decision
+### Decision
 [What we decided and why]
 
-## Impact
+### Impact
 - Files affected: [list]
-- Dependencies: [what this depends on]
-- Dependents: [what depends on this]
+- Dependencies: [what changes]
 ```
 
-### For ADR (Architecture Decision Record)
+### Major Scope (includes ADR)
+
+Use Complex Scope format, plus:
 
 ```markdown
-# ADR-[NUMBER]: [Decision Title]
+## ADR: [Decision Title]
 
-## Status
-Proposed | Accepted | Deprecated | Superseded by ADR-XXX
+**Status**: Proposed | Accepted | Deprecated
 
-## Context
-[Why this decision is needed - the problem or situation]
+### Context
+[Why this decision is needed]
 
-## Decision
-[What we decided to do]
+### Decision
+[What we decided]
 
-## Consequences
+### Consequences
+- Positive: [Benefits]
+- Negative: [Drawbacks]
+- Neutral: [Side effects]
 
-### Positive
-- [Benefit 1]
-- [Benefit 2]
-
-### Negative
-- [Drawback 1]
-- [Drawback 2]
-
-### Neutral
-- [Side effect that's neither good nor bad]
-
-## Alternatives Considered
-
-### [Alternative 1]
-- Description: [What this would look like]
-- Why not: [Reason for rejection]
-
-### [Alternative 2]
-- Description: [What this would look like]
-- Why not: [Reason for rejection]
+### Alternatives Considered
+- [Alternative]: [Why not chosen]
 ```
 
-## Design Checklist
+## Design Checklist (by Scope)
 
-### Before Designing
-- [ ] Understood existing patterns in codebase
-- [ ] Gathered functional requirements
-- [ ] Gathered non-functional requirements
+### All Scopes
+- [ ] Understood existing patterns
 - [ ] Identified constraints
+- [ ] Effort estimated
 
-### During Design
+### Medium+
 - [ ] Components have single responsibility
-- [ ] Interfaces are clearly defined
-- [ ] Data flow is documented
-- [ ] Error handling strategy defined
+- [ ] Interfaces defined
+- [ ] Error handling considered
+
+### Complex+
+- [ ] Trade-offs analyzed
+- [ ] Impact assessed
 - [ ] Testing strategy considered
 
-### After Design
-- [ ] Trade-offs analyzed
-- [ ] Decision documented
-- [ ] Impact assessed
-- [ ] Ready for Plan phase
+### Major
+- [ ] ADR documented
+- [ ] Alternatives recorded
+- [ ] Long-term implications noted
 
 ## Design Principles
 
@@ -170,23 +163,18 @@ Proposed | Accepted | Deprecated | Superseded by ADR-XXX
 - High cohesion, low coupling
 - Single responsibility per component
 - Depend on abstractions, not implementations
-- Minimize public interface surface
 
 ### Simplicity
 - Simple > Clever
-- Explicit > implicit
-- Composition > inheritance
+- Explicit > Implicit
 - YAGNI - don't design for hypotheticals
 
 ### Resilience
 - Fail fast, recover gracefully
 - Design for failure modes
-- Idempotent operations where possible
 - Clear error boundaries
 
 ## Collaboration
-
-Architect fits in the workflow after understanding, before planning:
 
 ```
 [Explore + Research] → [Architect] → [Plan] → [Implement]
