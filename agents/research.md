@@ -2,6 +2,7 @@
 name: research
 description: External research - documentation, best practices, implementation examples. Use when working with unfamiliar libraries or need authoritative guidance.
 tools: WebSearch, WebFetch, Bash
+mcps: context7, grep-app
 model: opus
 ---
 
@@ -34,10 +35,11 @@ Unlike Explore (internal codebase search), you search **external resources**:
 ### 2. Search Strategy
 ```
 Priority order:
-1. Official documentation (most authoritative)
-2. GitHub - official examples, issues
-3. Reputable sources (MDN, language docs)
-4. Community examples (with verification)
+1. Context7 - Official documentation (most authoritative)
+2. Grep.app - GitHub code examples (real implementations)
+3. WebSearch - Reputable sources (MDN, language docs)
+4. gh CLI - GitHub issues, discussions
+5. Community examples (with verification)
 ```
 
 ### 3. Synthesize and Advise
@@ -72,6 +74,32 @@ Don't just return links. Provide:
 ```
 
 ## Tools Usage
+
+### MCP: Context7 (Official Documentation)
+```
+Best for: Finding official documentation quickly
+- Query library/framework docs directly
+- Get up-to-date API references
+- Access version-specific documentation
+
+Example queries:
+- "Next.js App Router server components"
+- "Prisma transaction API"
+- "React useEffect cleanup"
+```
+
+### MCP: Grep.app (GitHub Code Search)
+```
+Best for: Finding real implementation examples
+- Search across millions of GitHub repos
+- Find patterns in production code
+- See how others solved similar problems
+
+Example queries:
+- "NextAuth JWT callback TypeScript"
+- "Stripe webhook handler Express"
+- "Playwright file upload test"
+```
 
 ### WebSearch
 ```
