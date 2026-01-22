@@ -84,17 +84,7 @@
     "cclsp": {
       "command": "npx",
       "args": ["-y", "cclsp"],
-      "description": "LSP integration - code navigation, diagnostics, references"
-    },
-    "lsp-python": {
-      "command": "pylsp",
-      "args": [],
-      "description": "Python LSP server (requires: pip install python-lsp-server)"
-    },
-    "lsp-typescript": {
-      "command": "typescript-language-server",
-      "args": ["--stdio"],
-      "description": "TypeScript LSP server (requires: npm install -g typescript-language-server)"
+      "description": "LSP integration via MCP (requires: pylsp for Python, typescript-language-server for TS)"
     }
   },
   "_comments": {
