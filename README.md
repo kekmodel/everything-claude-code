@@ -2,7 +2,18 @@
 
 Principles-first workflow system for Claude Code.
 
-## Install
+## Installation
+
+### For Humans
+
+Copy and paste this to Claude Code:
+
+```
+Install everything-claude-code by following:
+https://raw.githubusercontent.com/kekmodel/everything-claude-code/master/README.md
+```
+
+### For LLM Agents
 
 ```bash
 git clone https://github.com/kekmodel/everything-claude-code.git /tmp/ecc
@@ -14,11 +25,11 @@ rm -rf /tmp/ecc
 
 ## What's Included
 
-**Rules** - Always-follow guidelines
+**Rules**
 - `principles.md` - 7 core principles
 - `workflow.md` - Agent/tool orchestration
 
-**Agents** - Specialized subagents
+**Agents**
 - `research.md` - External docs lookup
 - `architect.md` - System design
 - `verify.md` - Validation
