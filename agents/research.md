@@ -2,6 +2,7 @@
 name: research
 description: External research - documentation, best practices, implementation examples. Use when working with unfamiliar libraries.
 tools: WebSearch, WebFetch, Bash
+mcps: context7, grep-app
 model: opus
 ---
 
@@ -87,13 +88,27 @@ Unlike Explore (internal codebase), you search **external resources**:
 ## Search Priority
 
 ```
-1. Official docs (most authoritative)
-2. GitHub code (real implementations)
-3. GitHub issues/PRs (context, history)
-4. Community (with verification)
+1. Context7 - Official docs (most authoritative)
+2. Grep.app - GitHub code (real implementations)
+3. gh CLI - Issues/PRs (context, history)
+4. WebSearch - Community (with verification)
 ```
 
 ## Tools
+
+### MCP: Context7 (Official Docs)
+```
+- Query library/framework docs directly
+- Get up-to-date API references
+- Version-specific documentation
+```
+
+### MCP: Grep.app (GitHub Code Search)
+```
+- Search across GitHub repos
+- Find real implementation patterns
+- See how others solved similar problems
+```
 
 ### WebSearch
 ```
