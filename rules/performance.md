@@ -1,47 +1,49 @@
-# Performance Optimization
+# Performance Guidelines
 
-## Model Selection Strategy
+## Model Selection
 
-**Haiku 4.5** (90% of Sonnet capability, 3x cost savings):
-- Lightweight agents with frequent invocation
-- Pair programming and code generation
-- Worker agents in multi-agent systems
-
-**Sonnet 4.5** (Best coding model):
-- Main development work
-- Orchestrating multi-agent workflows
-- Complex coding tasks
-
-**Opus 4.5** (Deepest reasoning):
-- Complex architectural decisions
-- Maximum reasoning requirements
-- Research and analysis tasks
+| Model | Use Case |
+|-------|----------|
+| **Haiku** | Quick searches, simple tasks, worker agents |
+| **Sonnet** | Main development, orchestration |
+| **Opus** | Complex architecture, deep research, analysis |
 
 ## Context Window Management
 
-Avoid last 20% of context window for:
+Reserve context for:
 - Large-scale refactoring
-- Feature implementation spanning multiple files
-- Debugging complex interactions
+- Multi-file feature implementation
+- Complex debugging
 
-Lower context sensitivity tasks:
+Lower context sensitivity:
 - Single-file edits
-- Independent utility creation
-- Documentation updates
 - Simple bug fixes
+- Documentation updates
 
-## Ultrathink + Plan Mode
+## Agent Efficiency
 
-For complex tasks requiring deep reasoning:
-1. Use `ultrathink` for enhanced thinking
-2. Enable **Plan Mode** for structured approach
-3. "Rev the engine" with multiple critique rounds
-4. Use split role sub-agents for diverse analysis
+- Use Explore agent for codebase search
+- Parallelize independent agent tasks
+- Delegate complex subtasks to appropriate agents
 
-## Build Troubleshooting
+## Code Performance
 
-If build fails:
-1. Use **build-error-resolver** agent
-2. Analyze error messages
-3. Fix incrementally
-4. Verify after each fix
+General principles (language-agnostic):
+- Avoid premature optimization
+- Profile before optimizing
+- Optimize hot paths, not everything
+- Consider algorithmic complexity
+
+## Build Performance
+
+- Use incremental builds when available
+- Cache dependencies
+- Parallelize where possible
+- Clean build artifacts periodically
+
+## Supports Principle 4
+
+Small changes enable:
+- Faster feedback loops
+- Easier performance profiling
+- Incremental optimization

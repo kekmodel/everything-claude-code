@@ -10,7 +10,12 @@
 
 Types: feat, fix, refactor, docs, test, chore, perf, ci
 
-Note: Attribution disabled globally via ~/.claude/settings.json.
+## Commit Guidelines
+
+- Commit after each verified change (Principle 4)
+- Small, atomic commits preferred
+- Commit message describes "why", not "what"
+- Never commit broken code
 
 ## Pull Request Workflow
 
@@ -21,25 +26,25 @@ When creating PRs:
 4. Include test plan with TODOs
 5. Push with `-u` flag if new branch
 
-## Feature Implementation Workflow
+## Pre-Commit Checklist
 
-1. **Plan First**
-   - Use **planner** agent to create implementation plan
-   - Identify dependencies and risks
-   - Break down into phases
+Before any commit (supports Principle 2):
+- [ ] Build succeeds
+- [ ] Tests pass
+- [ ] Lint clean
+- [ ] No hardcoded secrets
+- [ ] Changes are verified
 
-2. **TDD Approach**
-   - Use **tdd-guide** agent
-   - Write tests first (RED)
-   - Implement to pass tests (GREEN)
-   - Refactor (IMPROVE)
-   - Verify 80%+ coverage
+## Branch Naming
 
-3. **Code Review**
-   - Use **code-reviewer** agent immediately after writing code
-   - Address CRITICAL and HIGH issues
-   - Fix MEDIUM issues when possible
+```
+feat/description
+fix/issue-number-description
+refactor/component-name
+```
 
-4. **Commit & Push**
-   - Detailed commit messages
-   - Follow conventional commits format
+## Merge Strategy
+
+- Prefer squash merges for feature branches
+- Preserve history for long-running branches
+- Always review the full diff before merge

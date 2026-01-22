@@ -6,41 +6,46 @@
 - **PostToolUse**: After tool execution (auto-format, checks)
 - **Stop**: When session ends (final verification)
 
-## Current Hooks (in ~/.claude/settings.json)
+## Configuration Location
+
+Hooks are configured in `~/.claude/settings.json`.
+
+## Useful Hook Examples
 
 ### PreToolUse
-- **tmux reminder**: Suggests tmux for long-running commands (npm, pnpm, yarn, cargo, etc.)
-- **git push review**: Opens Zed for review before push
-- **doc blocker**: Blocks creation of unnecessary .md/.txt files
+
+- Long-running command reminder (suggest tmux for npm, cargo, etc.)
+- Review before push (open editor for review)
+- Block unnecessary file creation
 
 ### PostToolUse
-- **PR creation**: Logs PR URL and GitHub Actions status
-- **Prettier**: Auto-formats JS/TS files after edit
-- **TypeScript check**: Runs tsc after editing .ts/.tsx files
-- **console.log warning**: Warns about console.log in edited files
+
+- Auto-format after edit (prettier, black, gofmt)
+- Type check after editing (tsc, mypy, cargo check)
+- Lint warning check
 
 ### Stop
-- **console.log audit**: Checks all modified files for console.log before session ends
+
+- Audit for debug statements (console.log, print, etc.)
+- Verify all tests still pass
+
+## Hook Best Practices
+
+1. Keep hooks fast (< 5 seconds)
+2. Make hooks language-aware (check file extension)
+3. Provide clear feedback on blocked actions
+4. Don't duplicate CI checks locally
 
 ## Auto-Accept Permissions
 
 Use with caution:
 - Enable for trusted, well-defined plans
 - Disable for exploratory work
-- NEVER use dangerously-skip-permissions flag
 - Configure `allowedTools` in `~/.claude.json` instead
 
-## TodoWrite Best Practices
+## Supports Principle 2
 
-Use TodoWrite tool to:
-- Track progress on multi-step tasks
-- Verify understanding of instructions
-- Enable real-time steering
-- Show granular implementation steps
-
-Todo list reveals:
-- Out of order steps
-- Missing items
-- Extra unnecessary items
-- Wrong granularity
-- Misinterpreted requirements
+Hooks can automate evidence collection:
+- Auto-run linter after edit
+- Auto-run type checker after edit
+- Enforce verification before commit
