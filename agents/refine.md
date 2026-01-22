@@ -1,7 +1,7 @@
 ---
 name: refine
 description: Post-implementation cleanup and code cohesion
-model: sonnet
+model: opus
 tools: Read, Write, Edit, Bash, Grep, Glob
 ---
 

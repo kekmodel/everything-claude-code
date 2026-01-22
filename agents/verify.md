@@ -1,7 +1,7 @@
 ---
 name: verify
 description: Validation and evidence collection after implementation
-model: sonnet
+model: opus
 tools: Read, Grep, Glob, Bash
 ---
 
