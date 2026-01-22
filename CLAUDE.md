@@ -21,6 +21,7 @@ This is a **configuration repository**, not a code project. It contains markdown
 | `hooks/` | Tool event automations | JSON config + shell scripts |
 | `contexts/` | Dynamic system prompt injection | Markdown |
 | `mcp-configs/` | MCP server configurations | JSON |
+| `examples/` | Sample CLAUDE.md configs and session logs | Markdown/JSON |
 
 ### File Formats
 
@@ -50,6 +51,13 @@ description: Brief description
 }
 ```
 
+## Context Window Management
+
+**Critical:** Don't enable all MCPs at once. Your 200k context window can shrink to 70k with too many tools enabled.
+
+- Keep under 10 MCPs enabled per project, under 80 tools active
+- Use `disabledMcpServers` in project config to disable unused ones
+
 ## Key Design Principles
 
 1. **Agent-first** - Delegate complex tasks to specialized subagents
@@ -57,12 +65,33 @@ description: Brief description
 3. **Plan before execute** - Use planner agent for complex features
 4. **Modular rules** - One domain per rule file, not monolithic configs
 
+## Model Selection for Agents
+
+- **opus** - Complex reasoning: planning, architecture, security review
+- **sonnet** - General tasks: code review, documentation, refactoring
+- **haiku** - Quick tasks: formatting, simple lookups, build error resolution
+
 ## Conventions
 
 - Filenames: lowercase with hyphens (`code-reviewer.md`, `tdd-workflow.md`)
 - No emojis in any files
 - Agent/skill name should match filename
 - API keys use `YOUR_*_HERE` placeholders in examples
+
+## Available Commands
+
+| Command | Purpose |
+|---------|---------|
+| `/tdd` | Test-driven development workflow |
+| `/plan` | Create implementation plan |
+| `/code-review` | Quality and security review |
+| `/build-fix` | Fix build errors |
+| `/e2e` | E2E test generation |
+| `/refactor-clean` | Dead code removal |
+| `/learn` | Extract patterns mid-session |
+| `/test-coverage` | Analyze test coverage |
+| `/update-docs` | Sync documentation |
+| `/update-codemaps` | Update code structure maps |
 
 ## Hook Event Types
 
