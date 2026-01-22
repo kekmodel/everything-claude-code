@@ -51,10 +51,10 @@ After removing:
 
 ## NEVER Remove
 
-- Authentication code (Privy)
-- Database clients (Supabase)
-- Payment/trading logic
-- Core integrations (Redis, OpenAI)
+- Authentication code
+- Database clients
+- Payment/financial logic
+- Core integrations (cache, AI, external APIs)
 
 ## Rules
 

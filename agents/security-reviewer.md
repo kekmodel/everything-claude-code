@@ -66,13 +66,6 @@ await db.transaction(async (trx) => {
 - No rate limiting on sensitive endpoints
 - JWT stored in localStorage (use httpOnly cookies)
 
-## Project-Specific Checks
-
-- [ ] Supabase RLS enabled on all tables
-- [ ] Wallet signatures verified
-- [ ] No PII sent to OpenAI
-- [ ] Redis AUTH enabled
-
 ## Output Format
 
 ```
