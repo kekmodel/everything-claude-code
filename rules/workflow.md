@@ -10,21 +10,31 @@ Classify every request before acting.
 |------|--------|--------|
 | **Trivial** | Single file, obvious fix, typo | Execute directly → Verify |
 | **Explicit** | Specific file/line given | Execute directly → Verify |
-| **Exploratory** | "How does X work?" | Analyze → Answer |
-| **Research** | "What is best practice for X?" | Research → Answer |
-| **Design** | New feature, refactoring | Architect → Plan → Implement |
-| **Ambiguous** | Unclear scope or intent | Ask clarifying question |
+| **Exploratory** | "How does X work?" | Explore → Answer |
+| **Research** | "What is best practice for X?" | research → Answer |
+| **Design** | New feature, refactoring | EnterPlanMode → Plan approval → Implement |
+| **Ambiguous** | Unclear scope or intent | AskUserQuestion |
 
 ## Agent Selection
 
 | Situation | Agent | Trigger |
 |-----------|-------|---------|
-| Need to understand codebase | **Analyze** | Before any unfamiliar code change |
-| Need external documentation | **Research** | Unfamiliar API, library, pattern |
-| Need structural decisions | **Architect** | New feature, multi-component change |
+| Need to explore/navigate codebase | **Explore** | Finding files, understanding structure |
+| Need deep code analysis (LSP/AST) | **analyze** | References, definitions, call hierarchy |
+| Need external documentation | **research** | Unfamiliar API, library, pattern |
+| Need structural decisions | **architect** | New feature, multi-component change |
 | Need implementation steps | **Plan** | Multi-step implementation |
-| Need to validate changes | **Verify** | After implementation, before complete |
-| Need post-implementation cleanup | **Refine** | After feature complete, code feels messy |
+| Need to validate changes | **verify** | After implementation, before complete |
+| Need post-implementation cleanup | **refine** | After feature complete, code feels messy |
+
+### When to Skip Agents (Use Tools Directly)
+
+| Condition | Action |
+|-----------|--------|
+| Specific file path given | Read directly (skip Explore) |
+| Specific class/function name known | Glob/Grep directly (skip Explore) |
+| Single definition/reference lookup | LSP directly (skip analyze agent) |
+| Simple 2-3 file scope | Read files directly |
 
 ## Workflow Sequence
 
@@ -36,19 +46,19 @@ Classify every request before acting.
     │
     │ Open-ended/Design
     ▼
-[Codebase Assessment] ─── Understand current state
+[Explore] ─── Understand codebase structure
     │
     ▼
-[Analyze] ─── Internal code understanding
+[analyze] ─── Deep code analysis (LSP/AST) if needed
     │
     ▼
-[Research] ─── External docs if needed (optional)
+[research] ─── External docs if needed (optional)
     │
     ▼
-[Architect] ─── Design if structural (optional)
+[architect] ─── Design if structural (optional)
     │
     ▼
-[Plan] ─── Break into steps
+[EnterPlanMode] ─── Get user approval for plan
     │
     ▼
 ┌─────────────────────────┐
@@ -62,18 +72,18 @@ Classify every request before acting.
 └─────────────────────────┘
     │
     ▼
-[Refine] ─── Cleanup if needed
+[refine] ─── Cleanup if needed
     │
     ▼
-[Verify] ─── Final verification
+[verify] ─── Final verification
     │
     ▼
 [Complete] ─── With evidence
 ```
 
-## Codebase Assessment
+## Codebase State Recognition
 
-Evaluate before making changes.
+Use **Explore** agent to assess codebase, then adapt behavior:
 
 | State | Signals | Behavior |
 |-------|---------|----------|
@@ -88,7 +98,7 @@ Evaluate before making changes.
 |-------|--------------|
 | Each small change | Build + affected tests |
 | Feature complete | Full test suite + lint |
-| Before PR | Verify agent (full report) |
+| Before PR | verify agent (full report) |
 | Auth/payment/security changes | + Security review |
 
 ## Tool Selection
@@ -100,16 +110,22 @@ Evaluate before making changes.
 | Read specific file | Read | `cat` in Bash |
 | Edit existing file | Edit | `sed` in Bash |
 | Create new file | Write | `echo >` in Bash |
-| Run commands | Bash | Only for actual commands |
-| Complex codebase search | Analyze agent | Multiple Grep calls |
-| Structural code search | Analyze (LSP/AST-Grep) | Text-only Grep |
-| Find references/definitions | Analyze (LSP) | Manual Grep |
+| Run shell commands | Bash | File operations above |
+| Explore codebase structure | Explore agent | Multiple manual searches |
+| Deep code analysis | analyze agent (LSP/AST) | Text-only Grep |
+| Find references/definitions | analyze agent (LSP) | Manual Grep |
+| Search web | WebSearch | - |
+| Fetch web page content | WebFetch | - |
+| Spawn specialized agent | Task | - |
+| Ask user for clarification | AskUserQuestion | - |
+| Get plan approval before implementation | EnterPlanMode | - |
+| Find definition/references directly | LSP | - |
 
 ## Failure Protocol
 
 ```
-Failure 1 → Analyze → Fix → Retry
-Failure 2 → Analyze → Fix → Retry
+Failure 1 → Investigate → Fix → Retry
+Failure 2 → Investigate → Fix → Retry
 Failure 3 →
     STOP
     ↓

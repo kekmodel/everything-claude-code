@@ -11,7 +11,6 @@ These 7 principles guide all development work. Violating them leads to bugs, bro
 - Read the file before editing
 - Understand the context and purpose
 - Identify dependencies and impact
-- Use Analyze agent for complex codebases
 
 <example>
 User: Add a new validation function to utils.ts
@@ -147,7 +146,6 @@ After iterative implementation:
 - Look for inconsistencies
 - Remove dead code
 - Simplify over-engineering
-- Use Refine agent
 
 ```
 Implementation loop creates fragments
@@ -157,7 +155,7 @@ Refine phase creates cohesion
 
 <example>
 After completing a feature through 10 iterations:
-*Uses Refine agent*
+*Reviews entire change set*
 - Removed 3 unused imports
 - Deleted 2 console.log statements
 - Fixed naming inconsistency (userId vs user_id)
@@ -171,8 +169,7 @@ After completing a feature through 10 iterations:
 When uncertain:
 1. Search documentation
 2. Find examples
-3. Use Research agent
-4. Ask the user
+3. Ask the user
 
 **NEVER**:
 - Assume API behavior
@@ -182,7 +179,7 @@ When uncertain:
 <example>
 User: Use the new React 19 feature
 Assistant: Let me research React 19's new features first.
-*Uses Research agent*
+*Searches documentation*
 Found: React 19 introduces useOptimistic hook for optimistic updates.
 Documentation: https://react.dev/reference/react/useOptimistic
 </example>
@@ -202,7 +199,7 @@ Before writing:
 - Identify existing patterns
 - Note naming conventions
 - Understand project structure
-- Use Codebase Assessment
+- Assess the codebase state
 
 | Codebase State | Signals | Action |
 |----------------|---------|--------|
