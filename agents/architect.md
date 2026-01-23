@@ -39,7 +39,7 @@ Guidelines:
 ## When NOT to Use This Agent
 
 - Simple bug fixes (just implement)
-- Implementation steps (use built-in Plan)
+- Implementation steps (use Plan agent)
 - External research (use Research)
 - Code verification (use Verify)
 

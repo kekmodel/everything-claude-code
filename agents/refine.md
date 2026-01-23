@@ -111,10 +111,11 @@ npx depcheck          # Unused packages
 # Python
 vulture .             # Dead code
 autoflake --check .   # Unused imports
-
-# General
-grep -r "console.log" --include="*.ts"
-grep -r "TODO\|FIXME"
 ```
+
+For content search, use the Grep tool (not bash grep):
+- `console.log` statements in TypeScript files
+- `TODO` or `FIXME` comments
+- Debug print statements
 
 REMEMBER: Grep before removing. Test after each change. When in doubt, don't remove.
